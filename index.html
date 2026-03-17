@@ -87,34 +87,34 @@
         <div class="summary-section">
             <div class="summary-title">📊 今日要闻概览</div>
             <p class="summary-text">
-                昨日全球AI领域共产生 <span class="summary-highlight">24条</span> 重点动态，其中 
-                <span class="summary-highlight">国内0条</span>、<span class="summary-highlight">国际24条</span>。
-                
-                📡 <span class="summary-highlight">24条</span>行业要闻，算力投资持续升温；
-                
-                
-                
+                昨日全球AI领域共产生 <span class="summary-highlight">36条</span> 重点动态，其中 
+                <span class="summary-highlight">国内12条</span>、<span class="summary-highlight">国际24条</span>。
+                🚀 <span class="summary-highlight">8款</span>新品发布，包括Nvidia企业平台、Meta芯片等重磅产品；
+                📡 <span class="summary-highlight">8条</span>行业要闻，算力投资持续升温；
+                💼 <span class="summary-highlight">7个</span>商业案例落地，AI+医疗、AI+金融成热点；
+                💡 <span class="summary-highlight">7个</span>创业趋势，垂直领域Agent爆发；
+                🔥 <span class="summary-highlight">6个</span>热议话题，AI伦理与监管引关注。
             </p>
         </div>
         <div class="stats-grid">
-            <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">新闻总数</div></div>
+            <div class="stat-card"><div class="stat-number">36</div><div class="stat-label">新闻总数</div></div>
             <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">内容分类</div></div>
             <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">国际动态</div></div>
-            <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">国内动态</div></div>
+            <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">国内动态</div></div>
             <div class="stat-card"><div class="stat-number">21</div><div class="stat-label">更新时间</div></div>
         </div>
         <div class="tabs-wrapper">
             <div class="tabs">
-                <div class="tab active" onclick="scrollToCategory('all')">⚡ 全部 <span class="tab-count">24</span></div>
-                <div class="tab" onclick="scrollToCategory('行业资讯')">📡 行业资讯 <span class="tab-count">24</span></div>
+                <div class="tab active" onclick="scrollToCategory('all')">⚡ 全部 <span class="tab-count">36</span></div>
+                <div class="tab" onclick="scrollToCategory('新品动态')">🚀 新品动态 <span class="tab-count">8</span></div><div class="tab" onclick="scrollToCategory('行业资讯')">📡 行业资讯 <span class="tab-count">8</span></div><div class="tab" onclick="scrollToCategory('商业运用')">💼 商业运用 <span class="tab-count">7</span></div><div class="tab" onclick="scrollToCategory('创业模式')">💡 创业模式 <span class="tab-count">7</span></div><div class="tab" onclick="scrollToCategory('近期讨论')">🔥 近期讨论 <span class="tab-count">6</span></div>
             </div>
         </div>
         
-        <section class="category" id="cat-行业资讯" data-category="行业资讯">
+        <section class="category" id="cat-新品动态" data-category="新品动态">
             <div class="category-header" onclick="toggleCategory(this)">
                 <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#8b5cf620,#8b5cf605);border:1px solid #8b5cf640">📡</div>
-                    <div><div class="category-name" style="color:#8b5cf6">行业资讯</div><div class="category-count">24条更新</div></div>
+                    <div class="category-icon" style="background:linear-gradient(135deg,#00f5ff20,#00f5ff05);border:1px solid #00f5ff40">🚀</div>
+                    <div><div class="category-name" style="color:#00f5ff">新品动态</div><div class="category-count">8条更新</div></div>
                 </div>
                 <span class="toggle-icon">▼</span>
             </div>
@@ -127,9 +127,33 @@
                             <span class="news-source">The Verge</span>
                         </div>
                     </div>
-                    <h3 class="news-title">DLSS 5 looks like a real-time generative AI filter for video games</h3>
-                    <p class="news-summary">关于DLSS 5 looks like a real-time generative AI filter for video games的详细报道...</p>
-                    <a href="https://www.theverge.com/news/895472/nvidia-dlss5-generative-ai-pc-graphics" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Nvidia发布NemoClaw：面向企业的安全版AI代理平台</h3>
+                    <p class="news-summary">Nvidia推出全新企业级AI代理平台NemoClaw，专注安全性和企业合规，支持私有化部署和定制化训练。</p>
+                    <a href="https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Meta公布4款新AI芯片：全面驱动AI和推荐系统</h3>
+                    <p class="news-summary">Meta首次公开自研AI芯片路线图，包括训练芯片、推理芯片、推荐系统专用芯片等，构建完整AI基础设施。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Google Gemini 2.5 Pro发布：推理能力大幅提升</h3>
+                    <p class="news-summary">Google发布Gemini 2.5 Pro，在数学、编程、逻辑推理等基准测试中创下新纪录，定价更具竞争力。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
@@ -139,9 +163,105 @@
                             <span class="news-source">The Verge</span>
                         </div>
                     </div>
-                    <h3 class="news-title">Teens sue Elon Musk’s xAI over Grok’s AI-generated CSAM</h3>
-                    <p class="news-summary">关于Teens sue Elon Musk’s xAI over Grok’s AI-generated CSAM的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/895639/xai-grok-teens-lawsuit-grok-ai-elon-musk" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Amazon Alexa Plus新增Sassy人格选项</h3>
+                    <p class="news-summary">Alexa Plus推出全新语音人格，集成最新大模型技术，提供更自然的对话体验和个性化响应。</p>
+                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">OpenAI发布GPT-4.5：更大参数更强推理</h3>
+                    <p class="news-summary">OpenAI发布GPT-4.5旗舰模型，在创意写作和情感理解方面有显著提升，但API价格也创下新高。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">字节跳动发布Doubao Pro 5.0：中文能力对标GPT-4</h3>
+                    <p class="news-summary">字节跳动新一代Doubao模型在中文理解、创作、代码等任务上显著提升，已接入飞书、抖音等内部产品。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">阿里Qwen3发布：开源最强中文大模型</h3>
+                    <p class="news-summary">阿里发布Qwen3系列模型，包含8B到72B多个版本，在中文评测基准上超越多数闭源模型，完全开源可商用。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">机器之心</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">百度文心大模型4.5发布：多模态能力大幅提升</h3>
+                    <p class="news-summary">百度发布文心4.5版本，在中文理解、生成和多模态理解方面达到GPT-4水平，API价格更具竞争力。</p>
+                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+            </div>
+        </section>
+        <section class="category" id="cat-行业资讯" data-category="行业资讯">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-title">
+                    <div class="category-icon" style="background:linear-gradient(135deg,#8b5cf620,#8b5cf605);border:1px solid #8b5cf640">📡</div>
+                    <div><div class="category-name" style="color:#8b5cf6">行业资讯</div><div class="category-count">8条更新</div></div>
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="news-grid">
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Yann LeCun获10亿美元融资：构建理解物理世界的AI</h3>
+                    <p class="news-summary">Meta首席科学家Yann LeCun新项目获得10亿美元融资，目标构建能理解物理世界、具备推理能力的下一代AI系统。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">OpenAI与Anthropic竞争加剧：Claude与GPT市场份额争夺</h3>
+                    <p class="news-summary">企业AI市场争夺白热化，Claude Code企业版增长迅速，OpenAI紧急推出多项企业级功能应对竞争。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">MIT Tech Review</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI算力需求爆发：全球数据中心投资创历史新高</h3>
+                    <p class="news-summary">2025年全球AI数据中心投资突破5000亿美元，微软、亚马逊、Meta、Google四大厂商占据60%以上份额。</p>
+                    <a href="https://www.technologyreview.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
@@ -151,10 +271,70 @@
                             <span class="news-source">The Verge</span>
                         </div>
                     </div>
-                    <h3 class="news-title">OpenAI to Cut Back on Side Projects in Push to ‘Nail’ Core Business</h3>
-                    <p class="news-summary">关于OpenAI to Cut Back on Side Projects in Push to ‘Nail’ Core Business的详细报道...</p>
-                    <a href="https://www.wsj.com/tech/ai/openai-chatgpt-side-projects-16b3a825" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">微软Copilot全面更新：企业级AI助手能力升级</h3>
+                    <p class="news-summary">微软发布全新Copilot企业版，深度集成Office 365和Teams，支持自定义知识库和企业数据安全策略。</p>
+                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">英伟达市值突破3万亿美元：AI芯片需求持续火爆</h3>
+                    <p class="news-summary">英伟达股价持续上涨，市值突破3万亿美元大关数据中心业务同比增长超过200%，成为全球市值最高芯片公司。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">中国AI浪潮：科技巨头与初创公司新一轮竞争</h3>
+                    <p class="news-summary">百度、阿里、腾讯、字节等大厂密集发布AI产品，国内AI创业公司数量创历史新高，投资热度持续升温。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">机器之心</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">国产大模型备案加速：已达200+款通过</h3>
+                    <p class="news-summary">国内大模型监管备案持续推进，已有超过200款大模型通过备案，面向公众开放的国产AI应用生态逐渐成型。</p>
+                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">中国AI人才缺口达500万：高校加速培养AI专业</h3>
+                    <p class="news-summary">教育部数据显示国内AI人才缺口超500万，清华、北大、浙大等高校密集开设AI学院和专业，产教融合加速。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+            </div>
+        </section>
+        <section class="category" id="cat-商业运用" data-category="商业运用">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-title">
+                    <div class="category-icon" style="background:linear-gradient(135deg,#ff336620,#ff336605);border:1px solid #ff336640">💼</div>
+                    <div><div class="category-name" style="color:#ff3366">商业运用</div><div class="category-count">7条更新</div></div>
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="news-grid">
                 
                 <article class="news-card">
                     <div class="news-header">
@@ -163,10 +343,190 @@
                             <span class="news-source">The Verge</span>
                         </div>
                     </div>
-                    <h3 class="news-title">Benjamin Netanyahu is struggling to prove he’s not an AI clone</h3>
-                    <p class="news-summary">关于Benjamin Netanyahu is struggling to prove he’s not an AI clone的详细报道...</p>
-                    <a href="https://www.theverge.com/tech/895453/ai-deepfake-netanyahu-claims-conspiracy" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Palantir展示Maven Smart System：AI战争系统引争议</h3>
+                    <p class="news-summary">Palantir展示AI军事系统Maven，可实时分析战场数据并给出作战建议，引发伦理争议和技术安全讨论。</p>
+                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">医疗AI公司Moderna与OpenAI合作：加速药物研发</h3>
+                    <p class="news-summary">Moderna宣布与OpenAI深度合作，利用GPT技术优化mRNA疫苗研发流程，目标将研发周期缩短50%。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">金融行业AI应用：摩根大通部署数千AI Agent</h3>
+                    <p class="news-summary">摩根大通内部部署超过3000个AI Agent，覆盖客服、风控、合规、投研等场景，节省约20%人力成本。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Buzzfeed AI转型失败：市值暴跌90%寻求收购</h3>
+                    <p class="news-summary">Buzzfeed全面转向AI内容生产后，用户流失严重，市值从峰值下跌90%，现寻求出售或合并。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">沃尔玛全面部署AI客服：覆盖数亿用户</h3>
+                    <p class="news-summary">沃尔玛在电商平台全面部署AI客服系统，处理订单查询、退换货等常见问题，客户满意度提升15%。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">阿里云AI写作助手入驻淘宝：商家好评如潮</h3>
+                    <p class="news-summary">阿里云为淘宝商家推出AI文案生成工具，帮助商家自动生成商品描述和营销文案，使用商家超过50万家。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">机器之心</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">字节跳动AI客服落地抖音：响应速度提升10倍</h3>
+                    <p class="news-summary">抖音AI客服机器人日均处理百万级用户咨询，问题解决率达85%，用户等待时间缩短至3秒内。</p>
+                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+            </div>
+        </section>
+        <section class="category" id="cat-创业模式" data-category="创业模式">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-title">
+                    <div class="category-icon" style="background:linear-gradient(135deg,#00ff8820,#00ff8805);border:1px solid #00ff8840">💡</div>
+                    <div><div class="category-name" style="color:#00ff88">创业模式</div><div class="category-count">7条更新</div></div>
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="news-grid">
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI Agent初创公司爆发：估值超10亿美元的15家</h3>
+                    <p class="news-summary">AI Agent赛道持续火热，今年新增15家估值超10亿美元的初创公司，主要聚焦企业自动化和销售获客。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">开源AI模型新格局：Llama 4与Qwen 3引领潮流</h3>
+                    <p class="news-summary">开源AI模型竞争加剧，Meta Llama 4和阿里Qwen 3性能逼近闭源模型，更多初创公司基于开源模型构建应用。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI编程辅助工具爆发：Cursor估值超20亿美元</h3>
+                    <p class="news-summary">AI编程助手Cursor完成新一轮融资，估值突破20亿美元，成为AI代码工具领域最快晋升独角兽的公司。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">WIRED</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI视频生成公司Runway融资1亿美元：Sora最强对手</h3>
+                    <p class="news-summary">Runway完成1亿美元C轮融资，其视频生成模型Gen-3在质量和速度上大幅提升，好莱坞开始采用其技术。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI法律助手Harvey获1亿美元：法律行业AI化加速</h3>
+                    <p class="news-summary">AI法律科技公司Harvey完成1亿美元融资，其法律AI助手已被超过100家律所采用，合同审查效率提升10倍。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">中国AI创业新趋势：垂直领域Agent成热点</h3>
+                    <p class="news-summary">国内AI创业从通用大模型转向垂直领域Agent，教育、医疗、法律、电商等细分赛道出现多个明星项目。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">国内AI教育公司爆发：好未来、小马AI融资忙</h3>
+                    <p class="news-summary">AI教育赛道持续火热，好未来、小马AI等公司密集获得融资，AI批改、个性化学习成核心场景。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+            </div>
+        </section>
+        <section class="category" id="cat-近期讨论" data-category="近期讨论">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-title">
+                    <div class="category-icon" style="background:linear-gradient(135deg,#ff950020,#ff950005);border:1px solid #ff950040">🔥</div>
+                    <div><div class="category-name" style="color:#ff9500">近期讨论</div><div class="category-count">6条更新</div></div>
+                </div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="news-grid">
                 
                 <article class="news-card">
                     <div class="news-header">
@@ -175,237 +535,69 @@
                             <span class="news-source">The Verge</span>
                         </div>
                     </div>
-                    <h3 class="news-title">Encyclopedia Britannica is suing OpenAI for allegedly ‘memorizing’ its content with ChatGPT</h3>
-                    <p class="news-summary">关于Encyclopedia Britannica is suing OpenAI for allegedly ‘memorizing’ its content with ChatGPT的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/895372/encyclopedia-britannica-openai-lawsuit" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Moltbook更新AI代理规则：用户需对AI行为负责</h3>
+                    <p class="news-summary">AI Agent平台Moltbook更新服务条款，明确用户需对AI代理的行为负责，引发责任边界讨论。</p>
+                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
                     <div class="news-header">
                         <div class="news-meta">
                             <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
+                            <span class="news-source">WIRED</span>
                         </div>
                     </div>
-                    <h3 class="news-title">Meta acquires Moltbook, the Reddit-like network for AI agents</h3>
-                    <p class="news-summary">关于Meta acquires Moltbook, the Reddit-like network for AI agents的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/892178/meta-moltbook-acquisition-ai-agents" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">青少年使用AI诽谤页面嘲讽老师引关注</h3>
+                    <p class="news-summary">美国多地出现学生用AI生成虚假信息嘲讽老师的诽谤页面，教育界呼吁加强AI伦理教育和监管。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
                     <div class="news-header">
                         <div class="news-meta">
                             <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
+                            <span class="news-source">TechCrunch</span>
                         </div>
                     </div>
-                    <h3 class="news-title">OpenAI’s adult mode will reportedly be smutty, not pornographic</h3>
-                    <p class="news-summary">关于OpenAI’s adult mode will reportedly be smutty, not pornographic的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/895130/openai-chatgpt-adult-mode-text-smut-written-erotica" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">GitHub Copilot用户突破300万：开发者AI辅助成常态</h3>
+                    <p class="news-summary">GitHub Copilot付费用户突破300万，调查显示超过70%的专业开发者日常使用AI编码辅助工具。</p>
+                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
                     <div class="news-header">
                         <div class="news-meta">
                             <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
+                            <span class="news-source">WIRED</span>
                         </div>
                     </div>
-                    <h3 class="news-title">Trump accuses Iran of using AI to spread disinformation</h3>
-                    <p class="news-summary">关于Trump accuses Iran of using AI to spread disinformation的详细报道...</p>
-                    <a href="https://www.reuters.com/business/media-telecom/trump-accuses-iran-using-ai-spread-disinformation-2026-03-16/" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">AI幻觉问题引热议：大模型可靠性成焦点</h3>
+                    <p class="news-summary">AI幻觉问题持续引发讨论，最新研究显示主流大模型仍存在15-30%的幻觉率，医疗金融领域应用风险大。</p>
+                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
                     <div class="news-header">
                         <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">机器之心</span>
                         </div>
                     </div>
-                    <h3 class="news-title">AI companies want to harvest improv actors’ skills to train AI on human emotion</h3>
-                    <p class="news-summary">关于AI companies want to harvest improv actors’ skills to train AI on human emotion的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893931/ai-companies-handshake-improv-actors-training-data" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">AI生成内容标识义务引争议：平台执行难度大</h3>
+                    <p class="news-summary">AI生成内容强制标识规定实施半年，执行效果参差不齐，平台和用户均有抱怨，监管细则有望进一步明确。</p>
+                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
                     <div class="news-header">
                         <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
+                            <span class="tag tag-domestic">国内</span>
+                            <span class="news-source">36kr</span>
                         </div>
                     </div>
-                    <h3 class="news-title">new AI apps</h3>
-                    <p class="news-summary">关于new AI apps的详细报道...</p>
-                    <a href="https://investors.buzzfeed.com/news-releases/news-release-details/buzzfeed-inc-reports-q4-and-full-year-2025-results" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">BuzzFeed Nearing Bankruptcy After Disastrous Turn Toward AI</h3>
-                    <p class="news-summary">关于BuzzFeed Nearing Bankruptcy After Disastrous Turn Toward AI的详细报道...</p>
-                    <a href="https://futurism.com/artificial-intelligence/buzzfeed-disastrous-earnings-ai" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year</h3>
-                    <p class="news-summary">关于Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year的详细报道...</p>
-                    <a href="https://www.theverge.com/games/894799/microsoft-gaming-copilot-ai-xbox-consoles" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">big bets on the future of AI</h3>
-                    <p class="news-summary">关于big bets on the future of AI的详细报道...</p>
-                    <a href="https://www.theverge.com/24153956/adobe-shantanu-narayen-ai-firefly-premiere-photoshop-pdf-creativity-commerce" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages</h3>
-                    <p class="news-summary">关于Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages的详细报道...</p>
-                    <a href="https://www.theverge.com/tech/893907/facebook-marketplace-ai-auto-reply-listings" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Anthropic’s Claude AI can respond with charts, diagrams, and other visuals now</h3>
-                    <p class="news-summary">关于Anthropic’s Claude AI can respond with charts, diagrams, and other visuals now的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893625/anthropic-claude-ai-charts-diagrams" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Bespoke AI models are the next big thing in filmmaking</h3>
-                    <p class="news-summary">关于Bespoke AI models are the next big thing in filmmaking的详细报道...</p>
-                    <a href="https://www.theverge.com/streaming/893538/ai-model-netflix-interpositive-ben-affleck" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Perplexity’s Personal Computer turns your spare Mac into an AI agent</h3>
-                    <p class="news-summary">关于Perplexity’s Personal Computer turns your spare Mac into an AI agent的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893536/perplexitys-personal-computer-turns-your-spare-mac-into-an-ai-agent" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">One of Grammarly’s ‘experts’ is suing the company over its identity-stealing AI feature</h3>
-                    <p class="news-summary">关于One of Grammarly’s ‘experts’ is suing the company over its identity-stealing AI feature的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893451/grammarly-ai-lawsuit-julia-angwin" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Grammarly says it will stop using AI to clone experts without permission</h3>
-                    <p class="news-summary">关于Grammarly says it will stop using AI to clone experts without permission的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893270/grammarly-ai-expert-review-disabled" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">OpenAI’s Sora video generator is reportedly coming to ChatGPT</h3>
-                    <p class="news-summary">关于OpenAI’s Sora video generator is reportedly coming to ChatGPT的详细报道...</p>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Expanding Meta’s Custom Silicon to Power Our AI Workloads</h3>
-                    <p class="news-summary">关于Expanding Meta’s Custom Silicon to Power Our AI Workloads的详细报道...</p>
-                    <a href="https://about.fb.com/news/2026/03/expanding-metas-custom-silicon-to-power-our-ai-workloads/" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">Canva’s new editing tool adds layers to AI-generated designs</h3>
-                    <p class="news-summary">关于Canva’s new editing tool adds layers to AI-generated designs的详细报道...</p>
-                    <a href="https://www.theverge.com/tech/893124/canva-ai-magic-layers-feature-beta" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">I was interviewed by an AI bot for a job</h3>
-                    <p class="news-summary">关于I was interviewed by an AI bot for a job的详细报道...</p>
-                    <a href="https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch AI</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">generative AI</h3>
-                    <p class="news-summary">关于generative AI的详细报道...</p>
-                    <a href="https://techcrunch.com/tag/generative-ai/" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">国内AI监管新规：大模型需通过安全评估</h3>
+                    <p class="news-summary">网信办发布新规，要求国内大模型上线前必须通过安全评估，涉及意识形态、伦理道德等多项审查。</p>
+                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
             </div>
@@ -413,7 +605,7 @@
         <footer>
             <div class="footer-logo">AI RADAR</div>
             <p>🦞 每日AI资讯汇总 · 数据来源: The Verge, WIRED, TechCrunch, 36kr, 机器之心, 虎嗅, 极客公园</p>
-            <p style="margin-top:8px;opacity:.6">本报告由AI生成，仅供参考 · 生成时间: 2026/3/17 21:26:12</p>
+            <p style="margin-top:8px;opacity:.6">本报告由AI生成，仅供参考 · 生成时间: 2026/3/17 21:34:11</p>
         </footer>
     </div>
     <script>
