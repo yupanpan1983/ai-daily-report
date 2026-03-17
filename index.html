@@ -3,256 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Radar - 3月16日全球AI动态日报</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>AI Radar - 2026年3月16日 全球AI动态日报</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-dark: #0a0a0f; --bg-card: #12121a; --bg-card-hover: #1a1a25; --accent-cyan: #00f5ff; --accent-purple: #8b5cf6; --accent-pink: #ff3366; --accent-yellow: #ffdd00; --accent-green: #00ff88; --text-primary: #ffffff; --text-secondary: #8b8b9e; --border-color: rgba(255,255,255,0.08); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Outfit', sans-serif; background: var(--bg-dark); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
-        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
-        .bg-animation::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 20% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(255, 51, 102, 0.05) 0%, transparent 60%); animation: bgMove 20s ease-in-out infinite; }
-        @keyframes bgMove { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(2%, 2%) rotate(1deg); } 66% { transform: translate(-1%, 1%) rotate(-1deg); } }
-        .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; }
-        header { padding: 50px 0 40px; text-align: center; }
-        .logo { font-size: 3.5em; font-weight: 800; letter-spacing: -2px; margin-bottom: 8px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: gradientShift 5s ease infinite; background-size: 200% 200%; }
-        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        .tagline { color: var(--text-secondary); font-size: 1.1em; font-weight: 300; }
-        .date-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-card); border: 1px solid var(--border-color); padding: 10px 24px; border-radius: 50px; margin-top: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; color: var(--accent-cyan); }
-        .date-badge::before { content: ''; width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: pulse 2s ease infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 50px; }
-        .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; text-align: center; transition: all 0.3s; position: relative; overflow: hidden; }
-        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); opacity: 0; transition: opacity 0.3s; }
-        .stat-card:hover { transform: translateY(-4px); border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        .stat-card:hover::before { opacity: 1; }
-        .stat-number { font-size: 2.8em; font-weight: 700; line-height: 1; margin-bottom: 8px; }
-        .stat-card:nth-child(1) .stat-number { color: var(--accent-cyan); }
-        .stat-card:nth-child(2) .stat-number { color: var(--accent-purple); }
-        .stat-card:nth-child(3) .stat-number { color: var(--accent-pink); }
-        .stat-card:nth-child(4) .stat-number { color: var(--accent-yellow); }
-        .stat-label { color: var(--text-secondary); font-size: 0.9em; font-weight: 500; }
-        .tabs-wrapper { position: sticky; top: 20px; z-index: 100; margin-bottom: 40px; }
-        .tabs { display: flex; gap: 8px; background: rgba(18, 18, 26, 0.9); backdrop-filter: blur(20px); padding: 8px; border-radius: 16px; border: 1px solid var(--border-color); overflow-x: auto; }
-        .tab { padding: 14px 28px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 0.95em; white-space: nowrap; transition: all 0.3s; display: flex; align-items: center; gap: 10px; border: 1px solid transparent; }
-        .tab:hover { background: rgba(255,255,255,0.05); }
-        .tab.active { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)); color: #000; font-weight: 700; box-shadow: 0 4px 20px rgba(0, 245, 255, 0.3); }
-        .tab-count { font-size: 0.75em; padding: 3px 8px; background: rgba(0,0,0,0.2); border-radius: 20px; font-weight: 500; }
-        .category { margin-bottom: 50px; scroll-margin-top: 120px; }
-        .category-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; cursor: pointer; padding-bottom: 16px; border-bottom: 1px solid var(--border-color); }
-        .category-title { display: flex; align-items: center; gap: 14px; }
-        .category-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5em; }
-        .category-1 .category-icon { background: linear-gradient(135deg, rgba(255,107,107,0.2), rgba(255,107,107,0.1)); border: 1px solid rgba(255,107,107,0.3); }
-        .category-2 .category-icon { background: linear-gradient(135deg, rgba(0,245,255,0.2), rgba(0,245,255,0.1)); border: 1px solid rgba(0,245,255,0.3); }
-        .category-3 .category-icon { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(139,92,246,0.1)); border: 1px solid rgba(139,92,246,0.3); }
-        .category-4 .category-icon { background: linear-gradient(135deg, rgba(255,221,0,0.2), rgba(255,221,0,0.1)); border: 1px solid rgba(255,221,0,0.3); }
-        .category-name { font-size: 1.4em; font-weight: 700; }
-        .category-1 .category-name { color: #ff6b6b; }
-        .category-2 .category-name { color: #00f5ff; }
-        .category-3 .category-name { color: #8b5cf6; }
-        .category-4 .category-name { color: #ffdd00; }
-        .category-count { color: var(--text-secondary); font-size: 0.9em; }
-        .toggle-icon { font-size: 1.2em; color: var(--text-secondary); transition: transform 0.3s; }
-        .category.collapsed .toggle-icon { transform: rotate(-90deg); }
-        .category.collapsed .news-grid { display: none; }
-        .news-grid { display: grid; gap: 16px; }
-        .news-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; padding: 28px; transition: all 0.3s; position: relative; overflow: hidden; }
-        .news-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple)); opacity: 0; transition: opacity 0.3s; }
-        .news-card:hover { background: var(--bg-card-hover); border-color: rgba(139, 92, 246, 0.3); transform: translateX(8px); }
-        .news-card:hover::before { opacity: 1; }
-        .news-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-        .news-source { font-family: 'JetBrains Mono', monospace; font-size: 0.8em; padding: 5px 12px; background: rgba(255,255,255,0.05); border-radius: 20px; color: var(--text-secondary); }
-        .tag { font-size: 0.7em; padding: 4px 10px; border-radius: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .tag-domestic { background: rgba(255,51,102,0.2); color: #ff3366; }
-        .tag-international { background: rgba(0,245,255,0.2); color: #00f5ff; }
-        .news-title { font-size: 1.15em; font-weight: 600; line-height: 1.5; margin-bottom: 12px; }
-        .news-desc { color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; font-size: 0.95em; }
-        .news-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-cyan); text-decoration: none; font-weight: 500; font-size: 0.9em; transition: all 0.2s; }
-        .news-link:hover { gap: 12px; color: var(--accent-purple); }
-        .news-link::after { content: '→'; }
-        footer { text-align: center; padding: 50px 0 30px; color: var(--text-secondary); font-size: 0.9em; }
-        .footer-logo { font-size: 1.5em; font-weight: 700; margin-bottom: 12px; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-purple); border-radius: 4px; }
-        @media (max-width: 768px) { .logo { font-size: 2.5em; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .stat-number { font-size: 2em; } .tabs { padding: 6px; } .tab { padding: 10px 18px; font-size: 0.85em; } .news-card { padding: 20px; } }
+        :root{--bg-dark:#050508;--bg-card:#0e0e14;--bg-card-hover:#15151d;--accent-cyan:#00f5ff;--accent-purple:#8b5cf6;--accent-pink:#ff3366;--accent-yellow:#ffdd00;--accent-green:#00ff88;--accent-orange:#ff9500;--text-primary:#ffffff;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;--border-color:rgba(255,255,255,0.06)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Outfit','Noto Sans SC',sans-serif;background:var(--bg-dark);color:var(--text-primary);min-height:100vh;line-height:1.6}
+        .bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden}
+        .bg-grad-1{position:absolute;top:-30%;left:-20%;width:60%;height:60%;background:radial-gradient(circle,rgba(139,92,246,0.15)0%,transparent 70%);animation:float 20s ease-in-out infinite}
+        .bg-grad-2{position:absolute;bottom:-20%;right:-10%;width:50%;height:50%;background:radial-gradient(circle,rgba(0,245,255,0.12)0%,transparent 70%);animation:float 25s ease-in-out infinite reverse}
+        @keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-30px)}66%{transform:translate(-20px,20px)}}
+        .grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background-image:linear-gradient(rgba(255,255,255,0.015)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015)1px,transparent 1px);background-size:50px 50px}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+        header{padding:60px 0 50px;text-align:center}
+        .logo{font-size:4em;font-weight:800;letter-spacing:-3px;margin-bottom:12px;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple),var(--accent-pink),var(--accent-orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:300% 300%;animation:gradientFlow 8s ease infinite}
+        @keyframes gradientFlow{0%,100%{background-position:0%50%}50%{background-position:100%50%}}
+        .tagline{color:var(--text-secondary);font-size:1.2em;font-weight:300;margin-bottom:24px}
+        .date-badge{display:inline-flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border-color);padding:14px 28px;border-radius:50px;font-family:'JetBrains Mono',monospace;font-size:0.95em;color:var(--accent-cyan)}
+        .date-badge::before{content:'';width:10px;height:10px;background:var(--accent-green);border-radius:50%;animation:pulse 2s ease infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+        .summary-section{background:linear-gradient(135deg,rgba(139,92,246,0.1)0%,rgba(0,245,255,0.1)100%);border:1px solid rgba(139,92,246,0.2);border-radius:24px;padding:32px;margin-bottom:40px}
+        .summary-title{font-size:1.3em;font-weight:600;margin-bottom:16px}
+        .summary-text{color:var(--text-secondary);line-height:1.8}
+        .summary-highlight{color:var(--accent-cyan);font-weight:500}
+        .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:50px}
+        .stat-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:24px 16px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
+        .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
+        .stat-card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,0.4);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+        .stat-card:hover::before{opacity:1}
+        .stat-card:nth-child(1)::before{background:var(--accent-cyan)}.stat-card:nth-child(2)::before{background:var(--accent-purple)}.stat-card:nth-child(3)::before{background:var(--accent-pink)}.stat-card:nth-child(4)::before{background:var(--accent-green)}.stat-card:nth-child(5)::before{background:var(--accent-orange)}
+        .stat-number{font-size:2.6em;font-weight:700;line-height:1.1;margin-bottom:8px}
+        .stat-card:nth-child(1) .stat-number{color:var(--accent-cyan)}.stat-card:nth-child(2) .stat-number{color:var(--accent-purple)}.stat-card:nth-child(3) .stat-number{color:var(--accent-pink)}.stat-card:nth-child(4) .stat-number{color:var(--accent-green)}.stat-card:nth-child(5) .stat-number{color:var(--accent-orange)}
+        .stat-label{color:var(--text-secondary);font-size:.85em;font-weight:500}
+        .tabs-wrapper{position:sticky;top:20px;z-index:100;margin-bottom:40px}
+        .tabs{display:flex;gap:10px;background:rgba(14,14,20,.95);backdrop-filter:blur(20px);padding:10px;border-radius:18px;border:1px solid var(--border-color);overflow-x:auto;flex-wrap:wrap;justify-content:center}
+        .tab{padding:12px 24px;border-radius:12px;cursor:pointer;font-weight:600;font-size:.95em;white-space:nowrap;transition:all .3s;display:flex;align-items:center;gap:8px;border:1px solid transparent}
+        .tab:hover{background:rgba(255,255,255,.08)}
+        .tab.active{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));color:#000;font-weight:700;box-shadow:0 4px 20px rgba(0,245,255,.3)}
+        .tab-count{font-size:.75em;padding:2px 8px;background:rgba(0,0,0,.2);border-radius:20px;font-weight:500}
+        .category{margin-bottom:50px;scroll-margin-top:140px}
+        .category-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--border-color);transition:border-color .3s}
+        .category-header:hover{border-color:rgba(139,92,246,.3)}
+        .category-title{display:flex;align-items:center;gap:16px}
+        .category-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6em}
+        .category-name{font-size:1.5em;font-weight:700}
+        .category-count{color:var(--text-secondary);font-size:.9em;margin-top:4px}
+        .toggle-icon{font-size:1.2em;color:var(--text-secondary);transition:transform .3s}
+        .category.collapsed .toggle-icon{transform:rotate(-90deg)}
+        .category.collapsed .news-grid{display:none}
+        .news-grid{display:grid;gap:20px}
+        .news-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
+        .news-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent-cyan),var(--accent-purple));opacity:0;transition:opacity .3s}
+        .news-card:hover{background:var(--bg-card-hover);border-color:rgba(139,92,246,.3);transform:translateX(8px)}
+        .news-card:hover::before{opacity:1}
+        .news-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+        .news-meta{display:flex;align-items:center;gap:12px}
+        .news-source{font-family:'JetBrains Mono',monospace;font-size:.8em;padding:5px 12px;background:rgba(255,255,255,.05);border-radius:20px;color:var(--text-secondary)}
+        .tag{font-size:.7em;padding:4px 10px;border-radius:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+        .tag-domestic{background:rgba(255,51,102,.2);color:#ff3366}
+        .tag-international{background:rgba(0,245,255,.2);color:#00f5ff}
+        .news-title{font-size:1.2em;font-weight:600;line-height:1.5;margin-bottom:12px}
+        .news-summary{color:var(--text-secondary);line-height:1.7;margin-bottom:18px;font-size:.95em}
+        .news-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent-cyan);text-decoration:none;font-weight:500;font-size:.9em;transition:all .2s}
+        .news-link:hover{gap:12px;color:var(--accent-purple)}
+        .news-link::after{content:'→'}
+        footer{text-align:center;padding:50px 0 30px;color:var(--text-secondary)}
+        .footer-logo{font-size:1.8em;font-weight:700;margin-bottom:12px;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        @media(max-width:768px){.logo{font-size:2.5em}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat-number{font-size:2em}.tabs{padding:8px}.tab{padding:10px 16px;font-size:.85em}.news-card{padding:20px}}
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
+    <div class="bg-animation">
+        <div class="bg-grad-1"></div>
+        <div class="bg-grad-2"></div>
+    </div>
     <div class="grid-overlay"></div>
     <div class="container">
         <header>
             <div class="logo">AI RADAR</div>
             <p class="tagline">全球AI动态，一页尽览</p>
-            <div class="date-badge"><span>2026-03-16</span><span>·</span><span>24小时AI资讯</span></div>
+            <div class="date-badge"><span>2026年3月16日 周一</span><span>·</span><span>24小时AI资讯</span></div>
         </header>
+        <div class="summary-section">
+            <div class="summary-title">📊 今日要闻概览</div>
+            <p class="summary-text">
+                昨日全球AI领域共产生 <span class="summary-highlight">24条</span> 重点动态，其中 
+                <span class="summary-highlight">国内0条</span>、<span class="summary-highlight">国际24条</span>。
+                
+                📡 <span class="summary-highlight">24条</span>行业要闻，算力投资持续升温；
+                
+                
+                
+            </p>
+        </div>
         <div class="stats-grid">
-            <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">新闻总数</div></div>
-            <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">数据源</div></div>
-            <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">国际新闻</div></div>
-            <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">国内新闻</div></div>
+            <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">新闻总数</div></div>
+            <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">内容分类</div></div>
+            <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">国际动态</div></div>
+            <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">国内动态</div></div>
+            <div class="stat-card"><div class="stat-number">18</div><div class="stat-label">更新时间</div></div>
         </div>
         <div class="tabs-wrapper">
             <div class="tabs">
-                <div class="tab active" onclick="scrollToCategory('all')">⚡ 全部 <span class="tab-count">8</span></div>
-                <div class="tab" onclick="scrollToCategory('新品')">🚀 新品 <span class="tab-count">5</span></div>
-                <div class="tab" onclick="scrollToCategory('行业')">📡 行业 <span class="tab-count">7</span></div>
-                <div class="tab" onclick="scrollToCategory('商业')">💎 商业 <span class="tab-count">4</span></div>
-                <div class="tab" onclick="scrollToCategory('讨论')">🔥 讨论 <span class="tab-count">2</span></div>
+                <div class="tab active" onclick="scrollToCategory('all')">⚡ 全部 <span class="tab-count">24</span></div>
+                <div class="tab" onclick="scrollToCategory('行业资讯')">📡 行业资讯 <span class="tab-count">24</span></div>
             </div>
         </div>
         
-        <section class="category category-1" id="cat-新品" data-category="新品">
+        <section class="category" id="cat-行业资讯" data-category="行业资讯">
             <div class="category-header" onclick="toggleCategory(this)">
                 <div class="category-title">
-                    <div class="category-icon">🚀</div>
-                    <div>
-                        <div class="category-name">新品</div>
-                        <div class="category-count">5条更新</div>
-                    </div>
+                    <div class="category-icon" style="background:linear-gradient(135deg,#8b5cf620,#8b5cf605);border:1px solid #8b5cf640">📡</div>
+                    <div><div class="category-name" style="color:#8b5cf6">行业资讯</div><div class="category-count">24条更新</div></div>
                 </div>
                 <span class="toggle-icon">▼</span>
             </div>
             <div class="news-grid">
                 
                 <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">The Verge</span>
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
                     </div>
-                    <h3 class="news-title">Latest In AI</h3>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">DLSS 5 looks like a real-time generative AI filter for video games</h3>
+                    <p class="news-summary">关于DLSS 5 looks like a real-time generative AI filter for video games的详细报道...</p>
+                    <a href="https://www.theverge.com/news/895472/nvidia-dlss5-generative-ai-pc-graphics" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">The Verge</span>
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
                     </div>
-                    <h3 class="news-title">Most Popular</h3>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Teens sue Elon Musk’s xAI over Grok’s AI-generated CSAM</h3>
+                    <p class="news-summary">关于Teens sue Elon Musk’s xAI over Grok’s AI-generated CSAM的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/895639/xai-grok-teens-lawsuit-grok-ai-elon-musk" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">The Verge</span>
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
                     </div>
-                    <h3 class="news-title">The Verge Daily</h3>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Benjamin Netanyahu is struggling to prove he’s not an AI clone</h3>
+                    <p class="news-summary">关于Benjamin Netanyahu is struggling to prove he’s not an AI clone的详细报道...</p>
+                    <a href="https://www.theverge.com/tech/895453/ai-deepfake-netanyahu-claims-conspiracy" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">WIRED</span>
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
                     </div>
-                    <h3 class="news-title">artificial intelligence</h3>
-                    <a href="https://www.wired.com/tag/artificial-intelligence/" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Encyclopedia Britannica is suing OpenAI for allegedly ‘memorizing’ its content with ChatGPT</h3>
+                    <p class="news-summary">关于Encyclopedia Britannica is suing OpenAI for allegedly ‘memorizing’ its content with ChatGPT的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/895372/encyclopedia-britannica-openai-lawsuit" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
                 <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">WIRED</span>
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
                     </div>
-                    <h3 class="news-title">‘100 Video Calls Per Day’: Models Are Applying to Be the Face of AI Scams</h3>
-                    <a href="https://www.wired.com/tag/artificial-intelligence/" class="news-link" target="_blank">查看原文 →</a>
+                    <h3 class="news-title">Meta acquires Moltbook, the Reddit-like network for AI agents</h3>
+                    <p class="news-summary">关于Meta acquires Moltbook, the Reddit-like network for AI agents的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/892178/meta-moltbook-acquisition-ai-agents" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">OpenAI’s adult mode will reportedly be smutty, not pornographic</h3>
+                    <p class="news-summary">关于OpenAI’s adult mode will reportedly be smutty, not pornographic的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/895130/openai-chatgpt-adult-mode-text-smut-written-erotica" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Trump accuses Iran of using AI to spread disinformation</h3>
+                    <p class="news-summary">关于Trump accuses Iran of using AI to spread disinformation的详细报道...</p>
+                    <a href="https://www.reuters.com/business/media-telecom/trump-accuses-iran-using-ai-spread-disinformation-2026-03-16/" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">AI companies want to harvest improv actors’ skills to train AI on human emotion</h3>
+                    <p class="news-summary">关于AI companies want to harvest improv actors’ skills to train AI on human emotion的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893931/ai-companies-handshake-improv-actors-training-data" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">new AI apps</h3>
+                    <p class="news-summary">关于new AI apps的详细报道...</p>
+                    <a href="https://investors.buzzfeed.com/news-releases/news-release-details/buzzfeed-inc-reports-q4-and-full-year-2025-results" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">BuzzFeed Nearing Bankruptcy After Disastrous Turn Toward AI</h3>
+                    <p class="news-summary">关于BuzzFeed Nearing Bankruptcy After Disastrous Turn Toward AI的详细报道...</p>
+                    <a href="https://futurism.com/artificial-intelligence/buzzfeed-disastrous-earnings-ai" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year</h3>
+                    <p class="news-summary">关于Microsoft’s Copilot AI assistant is coming to current-gen Xbox consoles this year的详细报道...</p>
+                    <a href="https://www.theverge.com/games/894799/microsoft-gaming-copilot-ai-xbox-consoles" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">big bets on the future of AI</h3>
+                    <p class="news-summary">关于big bets on the future of AI的详细报道...</p>
+                    <a href="https://www.theverge.com/24153956/adobe-shantanu-narayen-ai-firefly-premiere-photoshop-pdf-creativity-commerce" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages</h3>
+                    <p class="news-summary">关于Facebook Marketplace adds AI auto-replies for annoying ‘Is this still available?’ messages的详细报道...</p>
+                    <a href="https://www.theverge.com/tech/893907/facebook-marketplace-ai-auto-reply-listings" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Anthropic’s Claude AI can respond with charts, diagrams, and other visuals now</h3>
+                    <p class="news-summary">关于Anthropic’s Claude AI can respond with charts, diagrams, and other visuals now的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893625/anthropic-claude-ai-charts-diagrams" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Bespoke AI models are the next big thing in filmmaking</h3>
+                    <p class="news-summary">关于Bespoke AI models are the next big thing in filmmaking的详细报道...</p>
+                    <a href="https://www.theverge.com/streaming/893538/ai-model-netflix-interpositive-ben-affleck" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Perplexity’s Personal Computer turns your spare Mac into an AI agent</h3>
+                    <p class="news-summary">关于Perplexity’s Personal Computer turns your spare Mac into an AI agent的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893536/perplexitys-personal-computer-turns-your-spare-mac-into-an-ai-agent" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">One of Grammarly’s ‘experts’ is suing the company over its identity-stealing AI feature</h3>
+                    <p class="news-summary">关于One of Grammarly’s ‘experts’ is suing the company over its identity-stealing AI feature的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893451/grammarly-ai-lawsuit-julia-angwin" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Grammarly says it will stop using AI to clone experts without permission</h3>
+                    <p class="news-summary">关于Grammarly says it will stop using AI to clone experts without permission的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893270/grammarly-ai-expert-review-disabled" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">OpenAI’s Sora video generator is reportedly coming to ChatGPT</h3>
+                    <p class="news-summary">关于OpenAI’s Sora video generator is reportedly coming to ChatGPT的详细报道...</p>
+                    <a href="https://www.theverge.com/ai-artificial-intelligence/893189/openai-chatgpt-sora-integration" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Expanding Meta’s Custom Silicon to Power Our AI Workloads</h3>
+                    <p class="news-summary">关于Expanding Meta’s Custom Silicon to Power Our AI Workloads的详细报道...</p>
+                    <a href="https://about.fb.com/news/2026/03/expanding-metas-custom-silicon-to-power-our-ai-workloads/" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Canva’s new editing tool adds layers to AI-generated designs</h3>
+                    <p class="news-summary">关于Canva’s new editing tool adds layers to AI-generated designs的详细报道...</p>
+                    <a href="https://www.theverge.com/tech/893124/canva-ai-magic-layers-feature-beta" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">The Verge</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">I was interviewed by an AI bot for a job</h3>
+                    <p class="news-summary">关于I was interviewed by an AI bot for a job的详细报道...</p>
+                    <a href="https://www.theverge.com/featured-video/892850/i-was-interviewed-by-an-ai-bot-for-a-job" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch AI</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">generative AI</h3>
+                    <p class="news-summary">关于generative AI的详细报道...</p>
+                    <a href="https://techcrunch.com/tag/generative-ai/" class="news-link" target="_blank">查看原文 →</a>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-header">
+                        <div class="news-meta">
+                            <span class="tag tag-international">国际</span>
+                            <span class="news-source">TechCrunch AI</span>
+                        </div>
+                    </div>
+                    <h3 class="news-title">Picsart now allows creators to &#8216;hire&#8217; AI assistants through agent marketplace</h3>
+                    <p class="news-summary">关于Picsart now allows creators to &#8216;hire&#8217; AI assistants through agent marketplace的详细报道...</p>
+                    <a href="https://techcrunch.com/2026/03/16/picsart-now-allows-creators-to-hire-ai-assistants-through-agent-marketplace/" class="news-link" target="_blank">查看原文 →</a>
                 </article>
                 
             </div>
         </section>
-    
-        <section class="category category-2" id="cat-行业" data-category="行业">
-            <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon">📡</div>
-                    <div>
-                        <div class="category-name">行业</div>
-                        <div class="category-count">3条更新</div>
-                    </div>
-                </div>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">WIRED</span>
-                    </div>
-                    <h3 class="news-title">Google&#39;s AI Search Results Love to Refer You Back to Google</h3>
-                    <a href="https://www.wired.com/tag/artificial-intelligence/" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">WIRED</span>
-                    </div>
-                    <h3 class="news-title">China’s OpenClaw Boom Is a Gold Rush for AI Companies</h3>
-                    <a href="https://www.wired.com/tag/artificial-intelligence/" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-meta">
-                        <span class="tag tag-international">国际</span>
-                        <span class="news-source">WIRED</span>
-                    </div>
-                    <h3 class="news-title">Gamers’ Worst Nightmares About AI Are Coming True</h3>
-                    <a href="https://www.wired.com/tag/artificial-intelligence/" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-            </div>
-        </section>
-    
-        <section class="category category-3" id="cat-商业" data-category="商业">
-            <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon">💎</div>
-                    <div>
-                        <div class="category-name">商业</div>
-                        <div class="category-count">0条更新</div>
-                    </div>
-                </div>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="news-grid">
-                
-            </div>
-        </section>
-    
-        <section class="category category-4" id="cat-讨论" data-category="讨论">
-            <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon">🔥</div>
-                    <div>
-                        <div class="category-name">讨论</div>
-                        <div class="category-count">0条更新</div>
-                    </div>
-                </div>
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="news-grid">
-                
-            </div>
-        </section>
-    
         <footer>
             <div class="footer-logo">AI RADAR</div>
-            <p>🦞 每日AI资讯汇总 · 数据来源: The Verge, WIRED</p>
-            <p style="margin-top: 8px; opacity: 0.6;">本报告由AI生成，仅供参考</p>
+            <p>🦞 每日AI资讯汇总 · 数据来源: The Verge, WIRED, TechCrunch, 36kr, 机器之心</p>
+            <p style="margin-top:8px;opacity:.6">本报告由AI生成，仅供参考</p>
         </footer>
     </div>
     <script>
-        function scrollToCategory(cat) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            event.target.closest('.tab').classList.add('active');
-            if (cat === 'all') { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-            else { const target = document.getElementById('cat-' + cat); if (target) { target.classList.remove('collapsed'); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }
-        }
-        function toggleCategory(header) { header.parentElement.classList.toggle('collapsed'); }
+        function scrollToCategory(cat){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.closest('.tab').classList.add('active');if(cat==='all'){window.scrollTo({top:0,behavior:'smooth'})}else{const target=document.getElementById('cat-'+cat);if(target){target.classList.remove('collapsed');target.scrollIntoView({behavior:'smooth',block:'start'})}}}
+        function toggleCategory(header){header.parentElement.classList.toggle('collapsed')}
     </script>
 </body>
 </html>
