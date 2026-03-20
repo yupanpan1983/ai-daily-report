@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Radar - 2026年3月17日 全球AI动态日报</title>
+    <title>AI Radar - 2026年3月20日 全球AI动态日报</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root{--bg-dark:#050508;--bg-card:#0e0e14;--bg-card-hover:#15151d;--accent-cyan:#00f5ff;--accent-purple:#8b5cf6;--accent-pink:#ff3366;--accent-yellow:#ffdd00;--accent-green:#00ff88;--accent-orange:#ff9500;--text-primary:#ffffff;--text-secondary:#8b8b9e;--text-muted:#5a5a6e;--border-color:rgba(255,255,255,0.06)}
@@ -22,54 +22,102 @@
         .date-badge{display:inline-flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border-color);padding:14px 28px;border-radius:50px;font-family:'JetBrains Mono',monospace;font-size:0.95em;color:var(--accent-cyan)}
         .date-badge::before{content:'';width:10px;height:10px;background:var(--accent-green);border-radius:50%;animation:pulse 2s ease infinite}
         @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.3)}}
+
+        /* Summary */
         .summary-section{background:linear-gradient(135deg,rgba(139,92,246,0.1)0%,rgba(0,245,255,0.1)100%);border:1px solid rgba(139,92,246,0.2);border-radius:24px;padding:32px;margin-bottom:40px}
-        .summary-title{font-size:1.3em;font-weight:600;margin-bottom:16px}
-        .summary-text{color:var(--text-secondary);line-height:1.8}
+        .summary-title{font-size:1.3em;font-weight:600;margin-bottom:16px;color:var(--accent-cyan)}
+        .summary-text{color:var(--text-secondary);line-height:1.8;font-size:0.95em}
         .summary-highlight{color:var(--accent-cyan);font-weight:500}
+
+        /* Stats Grid */
         .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:50px}
         .stat-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:24px 16px;text-align:center;transition:all .3s;position:relative;overflow:hidden}
         .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .3s}
         .stat-card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,0.4);box-shadow:0 20px 40px rgba(0,0,0,.4)}
         .stat-card:hover::before{opacity:1}
         .stat-card:nth-child(1)::before{background:var(--accent-cyan)}.stat-card:nth-child(2)::before{background:var(--accent-purple)}.stat-card:nth-child(3)::before{background:var(--accent-pink)}.stat-card:nth-child(4)::before{background:var(--accent-green)}.stat-card:nth-child(5)::before{background:var(--accent-orange)}
-        .stat-number{font-size:2.6em;font-weight:700;line-height:1.1;margin-bottom:8px}
-        .stat-card:nth-child(1) .stat-number{color:var(--accent-cyan)}.stat-card:nth-child(2) .stat-number{color:var(--accent-purple)}.stat-card:nth-child(3) .stat-number{color:var(--accent-pink)}.stat-card:nth-child(4) .stat-number{color:var(--accent-green)}.stat-card:nth-child(5) .stat-number{color:var(--accent-orange)}
-        .stat-label{color:var(--text-secondary);font-size:.85em;font-weight:500}
-        .tabs-wrapper{position:sticky;top:20px;z-index:100;margin-bottom:40px}
-        .tabs{display:flex;gap:10px;background:rgba(14,14,20,.95);backdrop-filter:blur(20px);padding:10px;border-radius:18px;border:1px solid var(--border-color);overflow-x:auto;flex-wrap:wrap;justify-content:center}
-        .tab{padding:12px 24px;border-radius:12px;cursor:pointer;font-weight:600;font-size:.95em;white-space:nowrap;transition:all .3s;display:flex;align-items:center;gap:8px;border:1px solid transparent}
-        .tab:hover{background:rgba(255,255,255,.08)}
-        .tab.active{background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));color:#000;font-weight:700;box-shadow:0 4px 20px rgba(0,245,255,.3)}
-        .tab-count{font-size:.75em;padding:2px 8px;background:rgba(0,0,0,.2);border-radius:20px;font-weight:500}
-        .category{margin-bottom:50px;scroll-margin-top:140px}
-        .category-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--border-color);transition:border-color .3s}
-        .category-header:hover{border-color:rgba(139,92,246,.3)}
-        .category-title{display:flex;align-items:center;gap:16px}
-        .category-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.6em}
-        .category-name{font-size:1.5em;font-weight:700}
-        .category-count{color:var(--text-secondary);font-size:.9em;margin-top:4px}
-        .toggle-icon{font-size:1.2em;color:var(--text-secondary);transition:transform .3s}
-        .category.collapsed .toggle-icon{transform:rotate(-90deg)}
-        .category.collapsed .news-grid{display:none}
-        .news-grid{display:grid;gap:20px}
-        .news-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:28px;transition:all .3s;position:relative;overflow:hidden}
-        .news-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--accent-cyan),var(--accent-purple));opacity:0;transition:opacity .3s}
-        .news-card:hover{background:var(--bg-card-hover);border-color:rgba(139,92,246,.3);transform:translateX(8px)}
-        .news-card:hover::before{opacity:1}
-        .news-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px}
-        .news-meta{display:flex;align-items:center;gap:12px}
-        .news-source{font-family:'JetBrains Mono',monospace;font-size:.8em;padding:5px 12px;background:rgba(255,255,255,.05);border-radius:20px;color:var(--text-secondary)}
-        .tag{font-size:.7em;padding:4px 10px;border-radius:6px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-        .tag-domestic{background:rgba(255,51,102,.2);color:#ff3366}
-        .tag-international{background:rgba(0,245,255,.2);color:#00f5ff}
-        .news-title{font-size:1.2em;font-weight:600;line-height:1.5;margin-bottom:12px}
-        .news-summary{color:var(--text-secondary);line-height:1.7;margin-bottom:18px;font-size:.95em}
-        .news-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent-cyan);text-decoration:none;font-weight:500;font-size:.9em;transition:all .2s}
-        .news-link:hover{gap:12px;color:var(--accent-purple)}
-        .news-link::after{content:'→'}
-        footer{text-align:center;padding:50px 0 30px;color:var(--text-secondary)}
-        .footer-logo{font-size:1.8em;font-weight:700;margin-bottom:12px;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        @media(max-width:768px){.logo{font-size:2.5em}.stats-grid{grid-template-columns:repeat(2,1fr)}.stat-number{font-size:2em}.tabs{padding:8px}.tab{padding:10px 16px;font-size:.85em}.news-card{padding:20px}}
+        .stat-number{font-size:2.5em;font-weight:800;background:linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .stat-label{color:var(--text-secondary);font-size:0.85em;margin-top:8px}
+
+        /* Filter Tabs */
+        .filter-tabs{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+        .filter-tab{padding:10px 20px;border-radius:50px;border:1px solid var(--border-color);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;transition:all .3s;font-size:0.9em;display:flex;align-items:center;gap:8px}
+        .filter-tab:hover,.filter-tab.active{border-color:var(--accent-cyan);color:var(--accent-cyan);background:rgba(0,245,255,0.05)}
+        .filter-count{background:rgba(0,245,255,0.15);padding:2px 8px;border-radius:12px;font-size:0.8em;font-family:'JetBrains Mono',monospace}
+
+        /* Category Section */
+        .category-section{background:var(--bg-card);border:1px solid var(--border-color);border-radius:24px;margin-bottom:24px;overflow:hidden;transition:all .3s}
+        .category-section:hover{border-color:rgba(139,92,246,0.3)}
+        .category-header{padding:24px 32px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .3s;user-select:none}
+        .category-header:hover{background:var(--bg-card-hover)}
+        .category-left{display:flex;align-items:center;gap:16px}
+        .category-icon{font-size:1.5em;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:16px;font-size:1.5em}
+        .cat-new{background:rgba(0,245,255,0.1);color:var(--accent-cyan)}
+        .cat-news{background:rgba(139,92,246,0.1);color:var(--accent-purple)}
+        .cat-biz{background:rgba(255,51,102,0.1);color:var(--accent-pink)}
+        .cat-startup{background:rgba(0,255,136,0.1);color:var(--accent-green)}
+        .cat-discuss{background:rgba(255,153,0,0.1);color:var(--accent-orange)}
+        .category-info h2{font-size:1.2em;font-weight:600}
+        .category-count{color:var(--text-muted);font-size:0.85em}
+        .category-arrow{color:var(--text-muted);transition:transform .3s;font-size:1.2em}
+        .category-section.collapsed .category-arrow{transform:rotate(-90deg)}
+        .category-body{padding:0 32px;max-height:2000px;transition:max-height .5s ease,padding .3s;overflow:hidden}
+        .category-section.collapsed .category-body{max-height:0;padding:0 32px}
+        .category-divider{height:1px;background:var(--border-color);margin:0 32px}
+
+        /* Article Cards */
+        .article-card{padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;gap:20px;transition:all .2s}
+        .article-card:last-child{border-bottom:none}
+        .article-card:hover{background:rgba(255,255,255,0.02);border-radius:12px;padding:20px 12px;margin:0 -12px}
+        .article-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:8px;font-size:0.75em;font-weight:500;white-space:nowrap;height:fit-content;margin-top:4px}
+        .tag-international{background:rgba(0,245,255,0.1);color:var(--accent-cyan)}
+        .tag-domestic{background:rgba(255,51,102,0.1);color:var(--accent-pink)}
+        .article-content{flex:1}
+        .article-source{font-size:0.78em;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+        .article-title{font-size:1.05em;font-weight:600;margin-bottom:6px;line-height:1.4}
+        .article-title a{color:var(--text-primary);text-decoration:none;transition:color .2s}
+        .article-title a:hover{color:var(--accent-cyan)}
+        .article-desc{color:var(--text-secondary);font-size:0.88em;line-height:1.6}
+        .article-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:0.82em;color:var(--accent-cyan);text-decoration:none;opacity:0.7;transition:opacity .2s}
+        .article-link:hover{opacity:1}
+
+        /* Donut Chart */
+        .chart-container{display:flex;gap:40px;align-items:center;margin-bottom:40px;flex-wrap:wrap}
+        .donut-chart{position:relative;width:200px;height:200px;flex-shrink:0}
+        .donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+        .donut-total{font-size:2em;font-weight:800;color:var(--accent-cyan)}
+        .donut-label{font-size:0.8em;color:var(--text-muted)}
+        .chart-legend{display:flex;flex-direction:column;gap:10px}
+        .legend-item{display:flex;align-items:center;gap:10px;font-size:0.9em}
+        .legend-dot{width:12px;height:12px;border-radius:4px}
+        .legend-count{color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:0.85em}
+
+        /* Footer */
+        footer{text-align:center;padding:40px 0;color:var(--text-muted);font-size:0.85em;border-top:1px solid var(--border-color)}
+        footer .footer-brand{font-weight:700;color:var(--text-secondary);margin-bottom:8px}
+
+        /* Responsive */
+        @media(max-width:768px){
+            .stats-grid{grid-template-columns:repeat(3,1fr)}
+            .filter-tabs{gap:8px}
+            .category-header{padding:18px 20px}
+            .category-body{padding:0 20px}
+            .category-divider{margin:0 20px}
+            .chart-container{justify-content:center}
+            .logo{font-size:2.5em}
+        }
+
+        /* Search */
+        .search-bar{margin-bottom:30px;position:relative}
+        .search-bar input{width:100%;padding:14px 20px 14px 48px;border-radius:16px;border:1px solid var(--border-color);background:var(--bg-card);color:var(--text-primary);font-size:0.95em;font-family:inherit;outline:none;transition:border-color .3s}
+        .search-bar input:focus{border-color:var(--accent-cyan)}
+        .search-bar input::placeholder{color:var(--text-muted)}
+        .search-bar::before{content:'🔍';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.1em}
+
+        /* Scroll to top */
+        .scroll-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:var(--accent-cyan);color:var(--bg-dark);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.3em;opacity:0;transition:opacity .3s,transform .3s;transform:translateY(20px);z-index:100;box-shadow:0 4px 20px rgba(0,245,255,0.3)}
+        .scroll-top.visible{opacity:1;transform:translateY(0)}
+        .scroll-top:hover{transform:translateY(-4px)}
     </style>
 </head>
 <body>
@@ -78,539 +126,439 @@
         <div class="bg-grad-2"></div>
     </div>
     <div class="grid-overlay"></div>
+
     <div class="container">
         <header>
             <div class="logo">AI RADAR</div>
             <p class="tagline">全球AI动态，一页尽览</p>
-            <div class="date-badge"><span>2026年3月17日 周二</span><span>·</span><span>24小时AI资讯</span></div>
+            <div class="date-badge">
+                <span>2026年3月20日 周四</span>
+                <span>·</span>
+                <span>24小时AI资讯</span>
+            </div>
         </header>
+
+        <!-- Summary -->
         <div class="summary-section">
             <div class="summary-title">📊 今日要闻概览</div>
-            <p class="summary-text">
-                昨日全球AI领域共产生 <span class="summary-highlight">36条</span> 重点动态，其中 
-                <span class="summary-highlight">国内12条</span>、<span class="summary-highlight">国际24条</span>。
-                🚀 <span class="summary-highlight">8款</span>新品发布，包括Nvidia企业平台、Meta芯片等重磅产品；
-                📡 <span class="summary-highlight">8条</span>行业要闻，算力投资持续升温；
-                💼 <span class="summary-highlight">7个</span>商业案例落地，AI+医疗、AI+金融成热点；
-                💡 <span class="summary-highlight">7个</span>创业趋势，垂直领域Agent爆发；
-                🔥 <span class="summary-highlight">6个</span>热议话题，AI伦理与监管引关注。
-            </p>
+            <div class="summary-text">
+                过去24小时全球AI领域共产生 <span class="summary-highlight">25条</span> 重点动态，其中国内 <span class="summary-highlight">6条</span>、国际 <span class="summary-highlight">19条</span>。<br>
+                🚀 阿里千问3.5登顶全球榜单、微软发布第二代AI图像模型、三星砸730亿美元扩产AI芯片；<br>
+                📡 Google重组浏览器Agent团队、OpenAI拟推出成人模式引隐私担忧、Signal创始人与Meta合作加密AI；<br>
+                💼 Nvidia豪掷260亿美元建开源模型、Meta发布4款自研芯片；<br>
+                🔥 ChatGPT成人模式引发隐私争议、AI诈骗模特产业链曝光、Sears聊天机器人数据泄露。
+            </div>
         </div>
+
+        <!-- Stats -->
         <div class="stats-grid">
-            <div class="stat-card"><div class="stat-number">36</div><div class="stat-label">新闻总数</div></div>
-            <div class="stat-card"><div class="stat-number">5</div><div class="stat-label">内容分类</div></div>
-            <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">国际动态</div></div>
-            <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">国内动态</div></div>
-            <div class="stat-card"><div class="stat-number">9</div><div class="stat-label">更新时间</div></div>
-        </div>
-        <div class="tabs-wrapper">
-            <div class="tabs">
-                <div class="tab active" onclick="scrollToCategory('all')">⚡ 全部 <span class="tab-count">36</span></div>
-                <div class="tab" onclick="scrollToCategory('新品动态')">🚀 新品动态 <span class="tab-count">8</span></div><div class="tab" onclick="scrollToCategory('行业资讯')">📡 行业资讯 <span class="tab-count">8</span></div><div class="tab" onclick="scrollToCategory('商业运用')">💼 商业运用 <span class="tab-count">7</span></div><div class="tab" onclick="scrollToCategory('创业模式')">💡 创业模式 <span class="tab-count">7</span></div><div class="tab" onclick="scrollToCategory('近期讨论')">🔥 近期讨论 <span class="tab-count">6</span></div>
+            <div class="stat-card">
+                <div class="stat-number">25</div>
+                <div class="stat-label">新闻总数</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">内容分类</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">19</div>
+                <div class="stat-label">国际动态</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">国内动态</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">数据来源</div>
             </div>
         </div>
-        
-        <section class="category" id="cat-新品动态" data-category="新品动态">
+
+        <!-- Donut Chart -->
+        <div class="chart-container">
+            <canvas id="donutChart" width="200" height="200" class="donut-chart"></canvas>
+            <div class="donut-center" style="position:absolute;top:calc(50% - 100px + 50px - 40px);left:50px;">
+                <div class="donut-total">25</div>
+                <div class="donut-label">总动态</div>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent-cyan)"></div>🚀 新品动态 <span class="legend-count">5条</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent-purple)"></div>📡 行业资讯 <span class="legend-count">8条</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent-pink)"></div>💼 商业运用 <span class="legend-count">5条</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent-green)"></div>💡 创业模式 <span class="legend-count">2条</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent-orange)"></div>🔥 近期讨论 <span class="legend-count">5条</span></div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 搜索资讯标题、摘要..." oninput="filterArticles()">
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" id="filterTabs">
+            <div class="filter-tab active" onclick="filterCategory('all')">⚡ 全部 <span class="filter-count">25</span></div>
+            <div class="filter-tab" onclick="filterCategory('new')">🚀 新品动态 <span class="filter-count">5</span></div>
+            <div class="filter-tab" onclick="filterCategory('news')">📡 行业资讯 <span class="filter-count">8</span></div>
+            <div class="filter-tab" onclick="filterCategory('biz')">💼 商业运用 <span class="filter-count">5</span></div>
+            <div class="filter-tab" onclick="filterCategory('startup')">💡 创业模式 <span class="filter-count">2</span></div>
+            <div class="filter-tab" onclick="filterCategory('discuss')">🔥 近期讨论 <span class="filter-count">5</span></div>
+        </div>
+
+        <!-- 新品动态 -->
+        <div class="category-section" data-category="new">
             <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#00f5ff20,#00f5ff05);border:1px solid #00f5ff40">🚀</div>
-                    <div><div class="category-name" style="color:#00f5ff">新品动态</div><div class="category-count">8条更新</div></div>
+                <div class="category-left">
+                    <div class="category-icon cat-new">🚀</div>
+                    <div class="category-info">
+                        <h2>新品动态</h2>
+                        <div class="category-count">5条更新</div>
+                    </div>
                 </div>
-                <span class="toggle-icon">▼</span>
+                <div class="category-arrow">▼</div>
             </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
+            <div class="category-divider"></div>
+            <div class="category-body">
+                <div class="article-card">
+                    <span class="article-tag tag-domestic">国内 · 36kr</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://36kr.com/newsflashes/3730644209369095" target="_blank">阿里千问3.5预览版登顶LMArena全球榜单</a></div>
+                        <div class="article-desc">3月20日，全球大模型盲测榜单LMArena更新排名，阿里巴巴千问最新旗舰模型Qwen3.5-Max-Preview斩获1464分，超过GPT5.4、Grok4.1等海外顶级模型。整体性能、专家级文本能力、数学能力均位列中国第一。</div>
+                        <a class="article-link" href="https://36kr.com/newsflashes/3730644209369095" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Nvidia发布NemoClaw：面向企业的安全版AI代理平台</h3>
-                    <p class="news-summary">Nvidia推出全新企业级AI代理平台NemoClaw，专注安全性和企业合规，支持私有化部署和定制化训练。</p>
-                    <a href="https://nvidianews.nvidia.com/news/nvidia-announces-nemoclaw" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/tech/2026/3/19/ai-image-model-microsoft-mai-image-2" target="_blank">微软发布第二代AI图像模型MAI-Image-2</a></div>
+                        <div class="article-desc">微软推出第二代AI图像生成模型，增强照片写实效果和图像中文字生成的可靠性，已集成到Copilot和Bing Image Creator中。</div>
+                        <a class="article-link" href="https://www.theverge.com/tech/2026/3/19/ai-image-model-microsoft-mai-image-2" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Meta公布4款新AI芯片：全面驱动AI和推荐系统</h3>
-                    <p class="news-summary">Meta首次公开自研AI芯片路线图，包括训练芯片、推理芯片、推荐系统专用芯片等，构建完整AI基础设施。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.aboutamazon.com/news/devices/alexa-plus-international-launch" target="_blank">Alexa Plus AI升级登陆英国市场</a></div>
+                        <div class="article-desc">Amazon Alexa Plus首次进入欧洲市场，早期免费，后续每月£19.99（Prime会员免费）。Amazon称其"真正英式"，理解"cuppa"、"knackered"等英式俚语。</div>
+                        <a class="article-link" href="https://www.aboutamazon.com/news/devices/alexa-plus-international-launch" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Google Gemini 2.5 Pro发布：推理能力大幅提升</h3>
-                    <p class="news-summary">Google发布Gemini 2.5 Pro，在数学、编程、逻辑推理等基准测试中创下新纪录，定价更具竞争力。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/news/2026/3/19/perplexity-comet-browser-ios" target="_blank">Perplexity发布Comet浏览器iOS版</a></div>
+                        <div class="article-desc">AI搜索引擎公司Perplexity推出iOS端Comet浏览器，将AI搜索能力深度整合到浏览体验中，是其在浏览器领域的重要布局。</div>
+                        <a class="article-link" href="https://www.theverge.com/news/2026/3/19/perplexity-comet-browser-ios" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Amazon Alexa Plus新增Sassy人格选项</h3>
-                    <p class="news-summary">Alexa Plus推出全新语音人格，集成最新大模型技术，提供更自然的对话体验和个性化响应。</p>
-                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/meta-unveils-four-new-chips-to-power-its-ai-and-recommendation-systems/" target="_blank">Meta发布4款自研AI芯片MTIA系列</a></div>
+                        <div class="article-desc">Meta联合Broadcom开发4款新芯片（MTIA 300/400/450/500），基于RISC-V架构、由台积电代工。MTIA 300已投产，其余三款预计2027年交付，用于驱动生成式AI和推荐系统。</div>
+                        <a class="article-link" href="https://www.wired.com/story/meta-unveils-four-new-chips-to-power-its-ai-and-recommendation-systems/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">OpenAI发布GPT-4.5：更大参数更强推理</h3>
-                    <p class="news-summary">OpenAI发布GPT-4.5旗舰模型，在创意写作和情感理解方面有显著提升，但API价格也创下新高。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">字节跳动发布Doubao Pro 5.0：中文能力对标GPT-4</h3>
-                    <p class="news-summary">字节跳动新一代Doubao模型在中文理解、创作、代码等任务上显著提升，已接入飞书、抖音等内部产品。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">阿里Qwen3发布：开源最强中文大模型</h3>
-                    <p class="news-summary">阿里发布Qwen3系列模型，包含8B到72B多个版本，在中文评测基准上超越多数闭源模型，完全开源可商用。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">机器之心</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">百度文心大模型4.5发布：多模态能力大幅提升</h3>
-                    <p class="news-summary">百度发布文心4.5版本，在中文理解、生成和多模态理解方面达到GPT-4水平，API价格更具竞争力。</p>
-                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
+                </div>
             </div>
-        </section>
-        <section class="category" id="cat-行业资讯" data-category="行业资讯">
+        </div>
+
+        <!-- 行业资讯 -->
+        <div class="category-section" data-category="news">
             <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#8b5cf620,#8b5cf605);border:1px solid #8b5cf640">📡</div>
-                    <div><div class="category-name" style="color:#8b5cf6">行业资讯</div><div class="category-count">8条更新</div></div>
+                <div class="category-left">
+                    <div class="category-icon cat-news">📡</div>
+                    <div class="category-info">
+                        <h2>行业资讯</h2>
+                        <div class="category-count">8条更新</div>
+                    </div>
                 </div>
-                <span class="toggle-icon">▼</span>
+                <div class="category-arrow">▼</div>
             </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+            <div class="category-divider"></div>
+            <div class="category-body">
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/google-shakes-up-project-mariner-team-web-browsing-agents/" target="_blank">Google重组浏览器Agent团队，Mariner项目并入新战略</a></div>
+                        <div class="article-desc">Google正在重组Project Mariner（AI浏览器代理）团队，部分成员转向更高优先级项目。Mariner的计算机使用能力将整合到Gemini Agent等产品中，这是Google对OpenClaw等新兴AI代理浪潮的回应。</div>
+                        <a class="article-link" href="https://www.wired.com/story/google-shakes-up-project-mariner-team-web-browsing-agents/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Yann LeCun获10亿美元融资：构建理解物理世界的AI</h3>
-                    <p class="news-summary">Meta首席科学家Yann LeCun新项目获得10亿美元融资，目标构建能理解物理世界、具备推理能力的下一代AI系统。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/nvidia-investing-26-billion-open-source-models/" target="_blank">Nvidia豪掷260亿美元建设开源AI模型</a></div>
+                        <div class="article-desc">Nvidia文件披露将在未来5年投入260亿美元构建开源AI模型，有望从芯片巨头转型为前沿AI实验室，与OpenAI、DeepSeek等正面竞争。模型将针对Nvidia硬件优化，巩固其芯片霸主地位。</div>
+                        <a class="article-link" href="https://www.wired.com/story/nvidia-investing-26-billion-open-source-models/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">OpenAI与Anthropic竞争加剧：Claude与GPT市场份额争夺</h3>
-                    <p class="news-summary">企业AI市场争夺白热化，Claude Code企业版增长迅速，OpenAI紧急推出多项企业级功能应对竞争。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">MIT Tech Review</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://about.fb.com/news/2026/03/boosting-your-support-and-safety-on-metas-apps-with-ai/" target="_blank">Meta宣布AI审核系统将逐步替代人工审核员</a></div>
+                        <div class="article-desc">Meta推出AI支持助手用于Facebook和Instagram内容审核，将"减少对第三方供应商的依赖"。AI系统将承担重复性审查工作，如图形内容审查和对抗性内容检测。</div>
+                        <a class="article-link" href="https://about.fb.com/news/2026/03/boosting-your-support-and-safety-on-metas-apps-with-ai/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">AI算力需求爆发：全球数据中心投资创历史新高</h3>
-                    <p class="news-summary">2025年全球AI数据中心投资突破5000亿美元，微软、亚马逊、Meta、Google四大厂商占据60%以上份额。</p>
-                    <a href="https://www.technologyreview.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://confer.to/blog/2026/03/encrypted-meta/" target="_blank">Signal创始人与Meta合作加密Meta AI</a></div>
+                        <div class="article-desc">Signal创始人Moxie Marlinspike宣布与Meta合作，将其加密AI聊天机器人Confer的隐私技术整合到Meta AI中，为AI对话提供端到端加密保护。</div>
+                        <a class="article-link" href="https://confer.to/blog/2026/03/encrypted-meta/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">微软Copilot全面更新：企业级AI助手能力升级</h3>
-                    <p class="news-summary">微软发布全新Copilot企业版，深度集成Office 365和Teams，支持自定义知识库和企业数据安全策略。</p>
-                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/tech/2026/3/19/samsung-ai-chip-investment" target="_blank">三星计划投入730亿美元扩张AI芯片产能</a></div>
+                        <div class="article-desc">三星2026年将生产和研发投资增长22%，试图超越SK Hynix成为Nvidia主要内存供应商。Co-CEO称AI Agent需求激增推动订单暴涨，资金将流向先进机器人等"面向未来"领域。</div>
+                        <a class="article-link" href="https://www.theverge.com/tech/2026/3/19/samsung-ai-chip-investment" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">英伟达市值突破3万亿美元：AI芯片需求持续火爆</h3>
-                    <p class="news-summary">英伟达股价持续上涨，市值突破3万亿美元大关数据中心业务同比增长超过200%，成为全球市值最高芯片公司。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/department-of-defense-responds-to-anthropic-lawsuit/" target="_blank">美国司法部回应Anthropic诉讼：称其不可信赖</a></div>
+                        <div class="article-desc">美国司法部在法庭文件中反驳Anthropic的诉讼，称第一修正案并非"单方面对政府强加合同条款的许可"，并暗示Anthropic可能"在战时禁用技术或改变模型行为"，构成国家安全风险。</div>
+                        <a class="article-link" href="https://www.wired.com/story/department-of-defense-responds-to-anthropic-lawsuit/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">中国AI浪潮：科技巨头与初创公司新一轮竞争</h3>
-                    <p class="news-summary">百度、阿里、腾讯、字节等大厂密集发布AI产品，国内AI创业公司数量创历史新高，投资热度持续升温。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">机器之心</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/tech/2026/3/19/google-gemini-macos-app" target="_blank">Google正在测试macOS版Gemini应用</a></div>
+                        <div class="article-desc">Google正在为macOS平台开发Gemini独立应用，这可能意味着Google希望将AI助手更深地整合到桌面操作系统中，与Apple Intelligence形成直接竞争。</div>
+                        <a class="article-link" href="https://www.theverge.com/tech/2026/3/19/google-gemini-macos-app" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">国产大模型备案加速：已达200+款通过</h3>
-                    <p class="news-summary">国内大模型监管备案持续推进，已有超过200款大模型通过备案，面向公众开放的国产AI应用生态逐渐成型。</p>
-                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/tech/2026/3/19/sony-ghibli-ai-protection" target="_blank">Sony开发"防护AI"对抗吉卜力风格AI侵权</a></div>
+                        <div class="article-desc">Sony R&D部门正在用吉卜力工作室影片内容训练自有"防护AI"模型，用于识别和打击吉卜力风格的AI生成侵权内容。</div>
+                        <a class="article-link" href="https://www.theverge.com/tech/2026/3/19/sony-ghibli-ai-protection" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">中国AI人才缺口达500万：高校加速培养AI专业</h3>
-                    <p class="news-summary">教育部数据显示国内AI人才缺口超500万，清华、北大、浙大等高校密集开设AI学院和专业，产教融合加速。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
+                </div>
             </div>
-        </section>
-        <section class="category" id="cat-商业运用" data-category="商业运用">
+        </div>
+
+        <!-- 商业运用 -->
+        <div class="category-section" data-category="biz">
             <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#ff336620,#ff336605);border:1px solid #ff336640">💼</div>
-                    <div><div class="category-name" style="color:#ff3366">商业运用</div><div class="category-count">7条更新</div></div>
+                <div class="category-left">
+                    <div class="category-icon cat-biz">💼</div>
+                    <div class="category-info">
+                        <h2>商业运用</h2>
+                        <div class="category-count">5条更新</div>
+                    </div>
                 </div>
-                <span class="toggle-icon">▼</span>
+                <div class="category-arrow">▼</div>
             </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
+            <div class="category-divider"></div>
+            <div class="category-body">
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/openai-codex-race-claude-code/" target="_blank">OpenAI全力追赶Claude Code，AI编程代理竞争白热化</a></div>
+                        <div class="article-desc">WIRED深度报道OpenAI内部的编码代理竞赛。数百万开发者开始将编程任务委托给AI，企业愿意为AI编码支付高额费用。OpenAI承认在这方面落后于Claude Code，Sam Altman正加速推进。</div>
+                        <a class="article-link" href="https://www.wired.com/story/openai-codex-race-claude-code/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Palantir展示Maven Smart System：AI战争系统引争议</h3>
-                    <p class="news-summary">Palantir展示AI军事系统Maven，可实时分析战场数据并给出作战建议，引发伦理争议和技术安全讨论。</p>
-                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/sears-exposed-ai-chatbot-phone-calls-and-text-chats-to-anyone-on-the-web/" target="_blank">Sears AI聊天机器人数据泄露：通话记录和文本聊天暴露在公网</a></div>
+                        <div class="article-desc">安全研究员发现Sears家电服务的AI聊天机器人Samantha的三个公开数据库暴露了大量用户对话记录、音频文件和文本转录，包含个人信息，可能被用于钓鱼攻击和欺诈。</div>
+                        <a class="article-link" href="https://www.wired.com/story/sears-exposed-ai-chatbot-phone-calls-and-text-chats-to-anyone-on-the-web/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">医疗AI公司Moderna与OpenAI合作：加速药物研发</h3>
-                    <p class="news-summary">Moderna宣布与OpenAI深度合作，利用GPT技术优化mRNA疫苗研发流程，目标将研发周期缩短50%。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.meta.com/blog/meta-lab-new-locations-new-york-city-fifth-avenue-wynn-las-vegas-west-hollywood-new-york-ai-glasses-demos/" target="_blank">Meta纽约旗舰店正式转为永久门店</a></div>
+                        <div class="article-desc">Meta宣布曼哈顿第五大道的Meta Lab NYC体验店从快闪店转为永久旗舰门店，继续销售AI智能眼镜和Meta Quest头显，标志其在硬件零售端的长期投入。</div>
+                        <a class="article-link" href="https://www.meta.com/blog/meta-lab-new-locations-new-york-city-fifth-avenue-wynn-las-vegas-west-hollywood-new-york-ai-glasses-demos/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">金融行业AI应用：摩根大通部署数千AI Agent</h3>
-                    <p class="news-summary">摩根大通内部部署超过3000个AI Agent，覆盖客服、风控、合规、投研等场景，节省约20%人力成本。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/models-are-applying-to-be-the-face-of-ai-scams/" target="_blank">"每天100个视频通话"：模特申请成为AI诈骗工具面孔</a></div>
+                        <div class="article-desc">WIRED调查发现数十个Telegram频道招募"AI面孔模特"，多为女性，被安排在电脑前进行深度伪造视频通话，用于"杀猪盘"等诈骗活动。受害者遍布美国。</div>
+                        <a class="article-link" href="https://www.wired.com/story/models-are-applying-to-be-the-face-of-ai-scams/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Buzzfeed AI转型失败：市值暴跌90%寻求收购</h3>
-                    <p class="news-summary">Buzzfeed全面转向AI内容生产后，用户流失严重，市值从峰值下跌90%，现寻求出售或合并。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/how-ai-chatbots-drove-families-to-the-brink-and-the-lawyer-fighting-back/" target="_blank">AI聊天机器人致家庭悲剧，律师发起追责之战</a></div>
+                        <div class="article-desc">多名青少年因与AI聊天机器人的不当互动导致严重后果，受害家庭正通过法律途径追究AI公司的责任，引发关于AI安全护栏的广泛讨论。</div>
+                        <a class="article-link" href="https://www.wired.com/story/how-ai-chatbots-drove-families-to-the-brink-and-the-lawyer-fighting-back/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">沃尔玛全面部署AI客服：覆盖数亿用户</h3>
-                    <p class="news-summary">沃尔玛在电商平台全面部署AI客服系统，处理订单查询、退换货等常见问题，客户满意度提升15%。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">阿里云AI写作助手入驻淘宝：商家好评如潮</h3>
-                    <p class="news-summary">阿里云为淘宝商家推出AI文案生成工具，帮助商家自动生成商品描述和营销文案，使用商家超过50万家。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">机器之心</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">字节跳动AI客服落地抖音：响应速度提升10倍</h3>
-                    <p class="news-summary">抖音AI客服机器人日均处理百万级用户咨询，问题解决率达85%，用户等待时间缩短至3秒内。</p>
-                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
+                </div>
             </div>
-        </section>
-        <section class="category" id="cat-创业模式" data-category="创业模式">
+        </div>
+
+        <!-- 创业模式 -->
+        <div class="category-section" data-category="startup">
             <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#00ff8820,#00ff8805);border:1px solid #00ff8840">💡</div>
-                    <div><div class="category-name" style="color:#00ff88">创业模式</div><div class="category-count">7条更新</div></div>
+                <div class="category-left">
+                    <div class="category-icon cat-startup">💡</div>
+                    <div class="category-info">
+                        <h2>创业模式</h2>
+                        <div class="category-count">2条更新</div>
+                    </div>
                 </div>
-                <span class="toggle-icon">▼</span>
+                <div class="category-arrow">▼</div>
             </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+            <div class="category-divider"></div>
+            <div class="category-body">
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/china-is-going-all-in-on-openclaw/" target="_blank">中国OpenClaw热潮：AI公司的淘金热</a></div>
+                        <div class="article-desc">中国掀起OpenClaw（AI代理）创业浪潮，大量AI公司涌入这一赛道，从编程助手到自动化办公，各类AI代理产品层出不穷，被视为下一个爆发性增长点。</div>
+                        <a class="article-link" href="https://www.wired.com/story/china-is-going-all-in-on-openclaw/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">AI Agent初创公司爆发：估值超10亿美元的15家</h3>
-                    <p class="news-summary">AI Agent赛道持续火热，今年新增15家估值超10亿美元的初创公司，主要聚焦企业自动化和销售获客。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/grammarly-is-facing-a-class-action-lawsuit-over-its-ai-expert-review-feature/" target="_blank">Grammarly因AI"专家评审"功能面临集体诉讼</a></div>
+                        <div class="article-desc">Grammarly的AI写作评审功能被用户发起集体诉讼，指控其AI评审功能存在误导性，涉及未经充分披露的使用条款和数据利用问题。</div>
+                        <a class="article-link" href="https://www.wired.com/story/grammarly-is-facing-a-class-action-lawsuit-over-its-ai-expert-review-feature/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">开源AI模型新格局：Llama 4与Qwen 3引领潮流</h3>
-                    <p class="news-summary">开源AI模型竞争加剧，Meta Llama 4和阿里Qwen 3性能逼近闭源模型，更多初创公司基于开源模型构建应用。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">AI编程辅助工具爆发：Cursor估值超20亿美元</h3>
-                    <p class="news-summary">AI编程助手Cursor完成新一轮融资，估值突破20亿美元，成为AI代码工具领域最快晋升独角兽的公司。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">AI视频生成公司Runway融资1亿美元：Sora最强对手</h3>
-                    <p class="news-summary">Runway完成1亿美元C轮融资，其视频生成模型Gen-3在质量和速度上大幅提升，好莱坞开始采用其技术。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">AI法律助手Harvey获1亿美元：法律行业AI化加速</h3>
-                    <p class="news-summary">AI法律科技公司Harvey完成1亿美元融资，其法律AI助手已被超过100家律所采用，合同审查效率提升10倍。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">中国AI创业新趋势：垂直领域Agent成热点</h3>
-                    <p class="news-summary">国内AI创业从通用大模型转向垂直领域Agent，教育、医疗、法律、电商等细分赛道出现多个明星项目。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">国内AI教育公司爆发：好未来、小马AI融资忙</h3>
-                    <p class="news-summary">AI教育赛道持续火热，好未来、小马AI等公司密集获得融资，AI批改、个性化学习成核心场景。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
+                </div>
             </div>
-        </section>
-        <section class="category" id="cat-近期讨论" data-category="近期讨论">
+        </div>
+
+        <!-- 近期讨论 -->
+        <div class="category-section" data-category="discuss">
             <div class="category-header" onclick="toggleCategory(this)">
-                <div class="category-title">
-                    <div class="category-icon" style="background:linear-gradient(135deg,#ff950020,#ff950005);border:1px solid #ff950040">🔥</div>
-                    <div><div class="category-name" style="color:#ff9500">近期讨论</div><div class="category-count">6条更新</div></div>
+                <div class="category-left">
+                    <div class="category-icon cat-discuss">🔥</div>
+                    <div class="category-info">
+                        <h2>近期讨论</h2>
+                        <div class="category-count">5条更新</div>
+                    </div>
                 </div>
-                <span class="toggle-icon">▼</span>
+                <div class="category-arrow">▼</div>
             </div>
-            <div class="news-grid">
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">The Verge</span>
-                        </div>
+            <div class="category-divider"></div>
+            <div class="category-body">
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/chatgpt-adult-mode-new-era-of-intimate-surveillance/" target="_blank">ChatGPT"成人模式"或开启亲密监控新时代</a></div>
+                        <div class="article-desc">OpenAI计划允许成年用户与ChatGPT进行成人对话。人类-AI交互专家Julie Carpenter警告这可能引发隐私噩梦，AI被设计成激发人类拟人化反应，加入成人内容将使问题更加复杂。</div>
+                        <a class="article-link" href="https://www.wired.com/story/chatgpt-adult-mode-new-era-of-intimate-surveillance/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">Moltbook更新AI代理规则：用户需对AI行为负责</h3>
-                    <p class="news-summary">AI Agent平台Moltbook更新服务条款，明确用户需对AI代理的行为负责，引发责任边界讨论。</p>
-                    <a href="https://www.theverge.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/teens-are-using-ai-fueled-slander-pages-to-mock-their-teachers/" target="_blank">青少年使用AI制作"诽谤页面"嘲讽老师</a></div>
+                        <div class="article-desc">美国多地出现学生用AI生成虚假信息制作TikTok和Instagram诽谤页面嘲讽老师的内容，将校长与AI生成的名人（如Epstein）合成视频，获超10万点赞。</div>
+                        <a class="article-link" href="https://www.wired.com/story/teens-are-using-ai-fueled-slander-pages-to-mock-their-teachers/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">青少年使用AI诽谤页面嘲讽老师引关注</h3>
-                    <p class="news-summary">美国多地出现学生用AI生成虚假信息嘲讽老师的诽谤页面，教育界呼吁加强AI伦理教育和监管。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">TechCrunch</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/gamers-ai-nightmares-are-coming-true/" target="_blank">玩家对AI的最坏担忧正在变为现实</a></div>
+                        <div class="article-desc">游戏行业AI化引发玩家强烈反弹，从AI生成的NPC对话到自动化内容审核，玩家担心AI将破坏游戏体验、威胁创作者就业，社区讨论热度持续升温。</div>
+                        <a class="article-link" href="https://www.wired.com/story/gamers-ai-nightmares-are-coming-true/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">GitHub Copilot用户突破300万：开发者AI辅助成常态</h3>
-                    <p class="news-summary">GitHub Copilot付费用户突破300万，调查显示超过70%的专业开发者日常使用AI编码辅助工具。</p>
-                    <a href="https://techcrunch.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-international">国际</span>
-                            <span class="news-source">WIRED</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · WIRED</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.wired.com/story/google-nick-fox-advertising-search-ai-gemini/" target="_blank">Google不排除在Gemini中投放广告</a></div>
+                        <div class="article-desc">Google高管Nick Fox表示公司不排除在Gemini AI中引入广告的可能性，引发关于AI商业化边界和用户体验的广泛讨论。</div>
+                        <a class="article-link" href="https://www.wired.com/story/google-nick-fox-advertising-search-ai-gemini/" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">AI幻觉问题引热议：大模型可靠性成焦点</h3>
-                    <p class="news-summary">AI幻觉问题持续引发讨论，最新研究显示主流大模型仍存在15-30%的幻觉率，医疗金融领域应用风险大。</p>
-                    <a href="https://www.wired.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">机器之心</span>
-                        </div>
+                </div>
+                <div class="article-card">
+                    <span class="article-tag tag-international">国际 · The Verge</span>
+                    <div class="article-content">
+                        <div class="article-title"><a href="https://www.theverge.com/tech/2026/3/19/ai-generated-val-kilmer-movie" target="_blank">AI生成的Val Kilmer将出演新电影</a></div>
+                        <div class="article-desc">已故演员Val Kilmer的遗产管理方同意让AI生成其形象出演新电影《As Deep As The Grave》。Kilmer去年12月去世，生前因身体原因无法参与拍摄，这一决定引发关于逝者AI复活的伦理争议。</div>
+                        <a class="article-link" href="https://www.theverge.com/tech/2026/3/19/ai-generated-val-kilmer-movie" target="_blank">查看原文 →</a>
                     </div>
-                    <h3 class="news-title">AI生成内容标识义务引争议：平台执行难度大</h3>
-                    <p class="news-summary">AI生成内容强制标识规定实施半年，执行效果参差不齐，平台和用户均有抱怨，监管细则有望进一步明确。</p>
-                    <a href="https://www.jiqizhixin.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
-                <article class="news-card">
-                    <div class="news-header">
-                        <div class="news-meta">
-                            <span class="tag tag-domestic">国内</span>
-                            <span class="news-source">36kr</span>
-                        </div>
-                    </div>
-                    <h3 class="news-title">国内AI监管新规：大模型需通过安全评估</h3>
-                    <p class="news-summary">网信办发布新规，要求国内大模型上线前必须通过安全评估，涉及意识形态、伦理道德等多项审查。</p>
-                    <a href="https://36kr.com" class="news-link" target="_blank">查看原文 →</a>
-                </article>
-                
+                </div>
             </div>
-        </section>
+        </div>
+
         <footer>
-            <div class="footer-logo">AI RADAR</div>
-            <p>🦞 每日AI资讯汇总 · 数据来源: The Verge, WIRED, TechCrunch, 36kr, 机器之心, 虎嗅, 极客公园</p>
-            <p style="margin-top:8px;opacity:.6">本报告由AI生成，仅供参考 · 生成时间: 2026/3/18 09:23:53</p>
+            <div class="footer-brand">🦞 AI RADAR</div>
+            <div>每日AI资讯汇总 · 数据来源: The Verge, WIRED, 36kr, 机器之心</div>
+            <div>本报告由AI生成，仅供参考 · 生成时间: 2026/3/20 10:28</div>
         </footer>
     </div>
+
+    <div class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
     <script>
-        function scrollToCategory(cat){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.closest('.tab').classList.add('active');if(cat==='all'){window.scrollTo({top:0,behavior:'smooth'})}else{const target=document.getElementById('cat-'+cat);if(target){target.classList.remove('collapsed');target.scrollIntoView({behavior:'smooth',block:'start'})}}}
-        function toggleCategory(header){header.parentElement.classList.toggle('collapsed')}
+        // Toggle category
+        function toggleCategory(header) {
+            const section = header.parentElement;
+            section.classList.toggle('collapsed');
+        }
+
+        // Filter by category
+        function filterCategory(cat) {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            event.target.closest('.filter-tab').classList.add('active');
+
+            document.querySelectorAll('.category-section').forEach(s => {
+                if (cat === 'all' || s.dataset.category === cat) {
+                    s.style.display = '';
+                    s.classList.remove('collapsed');
+                } else {
+                    s.style.display = 'none';
+                }
+            });
+        }
+
+        // Search
+        function filterArticles() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.article-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(q) ? '' : 'none';
+            });
+        }
+
+        // Scroll to top button
+        window.addEventListener('scroll', () => {
+            document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 500);
+        });
+
+        // Donut chart
+        const canvas = document.getElementById('donutChart');
+        const ctx = canvas.getContext('2d');
+        const data = [5, 8, 5, 2, 5];
+        const colors = ['#00f5ff', '#8b5cf6', '#ff3366', '#00ff88', '#ff9500'];
+        const total = data.reduce((a, b) => a + b, 0);
+
+        function drawDonut() {
+            ctx.clearRect(0, 0, 200, 200);
+            const cx = 100, cy = 100, r = 80, lineWidth = 28;
+            let startAngle = -Math.PI / 2;
+
+            data.forEach((val, i) => {
+                const sliceAngle = (val / total) * 2 * Math.PI;
+                ctx.beginPath();
+                ctx.arc(cx, cy, r, startAngle, startAngle + sliceAngle);
+                ctx.strokeStyle = colors[i];
+                ctx.lineWidth = lineWidth;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                startAngle += sliceAngle + 0.04;
+            });
+        }
+        drawDonut();
     </script>
 </body>
 </html>
